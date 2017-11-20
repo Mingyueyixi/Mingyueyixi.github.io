@@ -10,12 +10,49 @@
 <span id="spanId" style = "width:50%; font-size: 40px"></span>
 <!-- <script src="js/go.js"></script> -->
   <script>
-    function a(){
-      while(true){
-        alert("作弄你...^_^");      
-      }
+    "use strict";
+exports.__esModule = true;
+var Test = (function () {
+    function Test() {
     }
-    a();
+    Test.prototype.printlnPI = function () {
+        this.addP("开始计算圆周率");
+        //    let date:Date = new Date();
+        var oldCurrMillis = Date.now();
+        var fenmu = 1; //分母
+        var fenzi = 2; //分子
+        var pi = 2 * fenzi / fenmu;
+        var i = 0;
+        var lenght = 1;
+        while (true) {
+            i++;
+            //Console.Writeline("第" + i + "次：");
+            var temp = fenmu;
+            fenmu = fenzi + 1;
+            fenzi = temp + 1;
+            pi *= fenzi / fenmu;
+            var newLenght = 0;
+            for (var tem = i; tem != 0; tem /= 10) {
+                newLenght++;
+            }
+            if (newLenght > lenght) {
+                lenght = newLenght;
+                var countMillis = Date.now() - oldCurrMillis;
+                var second = countMillis / 1000;
+                var milliSecond = countMillis % 1000;
+                var str = "第" + i + "次循环\n    pi=" + pi + "    耗时：" + second + "秒又" + milliSecond + "毫秒 "; //循环每增加一级，打印一次
+                this.addP(str);
+            }
+        }
+    };
+    Test.prototype.addP = function (str) {
+        document.writeln('<p style="font-size:20px">' + str + '</p>');
+    };
+    return Test;
+}());
+exports.Test = Test;
+new Test().printlnPI();
+
   </script>
 </div>
 </body>
