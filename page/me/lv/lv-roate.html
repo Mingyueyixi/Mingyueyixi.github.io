@@ -1,0 +1,163 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/common.css"/>
+
+  <style>
+
+
+    .layout-center{
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .qu-wrap {
+      width: 500px;
+      height: 500px;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      -webkit-filter: url("#goo");
+      filter: url("#goo");
+      transform: translateZ(0);
+    }
+
+    @-webkit-keyframes rotation{
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+    }
+
+    .Rotation{
+      -webkit-transform: rotate(360deg);
+      animation: rotation 6s linear infinite;
+      -moz-animation: rotation 6s linear infinite;
+      -webkit-animation: rotation 6s linear infinite;
+      -o-animation: rotation 6s linear infinite;
+    }
+
+    .ro-wrap{
+      width: 500px;
+      height: 500px;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      -webkit-filter: url("#goo");
+      filter: url("#goo");
+      transform: translateZ(0);
+    }
+    .qu-btn {
+      background-color: #E16132;
+      width: 100px;
+      line-height: 100px;
+      height: 100px;
+      font-size: 24px;
+      position: relative;
+      z-index: 1;
+      margin: auto;
+      cursor: pointer;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .trans {
+      transition: background-color .2s;
+    }
+
+    .qu {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      box-sizing: border-box;
+      line-height: 90px;
+      background-color: #E16132;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      transition: background-color .2s, transform .5s, color .2s;
+      border-radius: 50%;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .ro-wrap,.qu-wrap {
+      color: #fff;
+    }
+
+    .ro-wrap .qu-1,.qu-wrap:active .qu-1 {
+      transform: translate3d(0, -200%, 0);
+    }
+
+    .ro-wrap .qu-2,.qu-wrap:active .qu-2 {
+      transform: translate3d(-173.20%, -100%, 0);
+    }
+
+    .ro-wrap .qu-3,.qu-wrap:active .qu-3 {
+      transform: translate3d(173.20%, -100%, 0);
+    }
+
+    .ro-wrap .qu-4,.qu-wrap:active .qu-4 {
+      transform: translate3d(0, 200%, 0);
+    }
+
+    .ro-wrap .qu-5,.qu-wrap:active .qu-5 {
+      transform: translate3d(-173.20%, 100%, 0);
+    }
+
+    .ro-wrap .qu-6,.qu-wrap:active .qu-6 {
+      transform: translate3d(173.20%, 100%, 0);
+    }
+
+  </style>
+  <title>slow</title>
+</head>
+
+<body >
+
+<div class="page">
+
+  <div class="content">
+
+    <div class="layout-center">
+
+      <div class="qu-wrap">
+        <a class="qu-btn trans" role="button">吕</a>
+        <!-- 购买的几个地址 -->
+        <a class="qu qu-1" target="_blank">呆</a>
+        <a class="qu qu-2" target="_blank">萌</a>
+        <a class="qu qu-3" target="_blank">Q</a>
+        <a class="qu qu-4" target="_blank">宅</a>
+        <a class="qu qu-5" target="_blank">腐</a>
+        <a class="qu qu-6" target="_blank">秀</a>
+      </div>
+
+      <div style="margin: 50px">按住不放</div>
+
+      <div class="ro-wrap Rotation">
+        <a class="qu-btn trans" role="button"></a>
+        <!-- 购买的几个地址 -->
+        <a class="qu qu-1" target="_blank"></a>
+        <a class="qu qu-2" target="_blank"></a>
+        <a class="qu qu-3" target="_blank"></a>
+        <a class="qu qu-4" target="_blank"></a>
+        <a class="qu qu-5" target="_blank"></a>
+        <a class="qu qu-6" target="_blank"></a>
+      </div>
+      </p>
+    </div>
+
+  </div>
+
+
+</div>
+
+</body>
+
+</html>
