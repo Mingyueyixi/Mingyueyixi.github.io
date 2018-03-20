@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>旋转轮子</title>
+  <title>expan</title>
 
   <style>
     html{
@@ -15,36 +15,29 @@
       margin: 0 auto;
       font-size: 2rem;
     }
-
-    @-webkit-keyframes rotation{
-      from {-webkit-transform: rotate(0deg);}
-      to {-webkit-transform: rotate(360deg);}
-    }
-
-    .Rotation{
-      -webkit-transform: rotate(360deg);
-      animation: rotation 6s linear infinite;
-      -moz-animation: rotation 6s linear infinite;
-      -webkit-animation: rotation 6s linear infinite;
-      -o-animation: rotation 6s linear infinite;
-    }
-
-    .ro-wrap{
+    .qu-wrap {
       width: 30rem;
       height: 30rem;
-      margin: 0 auto;
       display: inline-block;
       text-align: center;
       position: relative;
       -webkit-filter: url("#goo");
       filter: url("#goo");
       transform: translateZ(0);
+      color: #fff;
     }
+
+    @-webkit-keyframes rotation{
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+    }
+
+
     .qu-btn {
       background-color: #E16132;
-      width: 5rem;
-      line-height: 5rem;
-      height: 5rem;
+      width: 4.25rem;
+      line-height: 4.25rem;
+      height: 4.25rem;
       position: relative;
       z-index: 1;
       margin: auto;
@@ -77,10 +70,6 @@
       transition: background-color .2s, transform .5s, color .2s;
       border-radius: 50%;
       transform: translate3d(0, 0, 0);
-    }
-
-    .ro-wrap {
-      color: #fff;
     }
 
     .ro-wrap .qu-1,.qu-wrap:active .qu-1,.qu-wrap:hover .qu-1 {
@@ -117,19 +106,20 @@
 
   <div class="content">
 
-    <div class="layout-center">
 
-      <div class="ro-wrap Rotation">
-        <a class="qu-btn trans" role="button"></a>
-        <a class="qu qu-1" target="_blank"></a>
-        <a class="qu qu-2" target="_blank"></a>
-        <a class="qu qu-3" target="_blank"></a>
-        <a class="qu qu-4" target="_blank"></a>
-        <a class="qu qu-5" target="_blank"></a>
-        <a class="qu qu-6" target="_blank"></a>
+    <div class="layout-center">
+      <div class="qu-wrap">
+        <a class="qu-btn trans" role="button">吕</a>
+        <a class="qu qu-1" target="_blank">呆</a>
+        <a class="qu qu-2" target="_blank">萌</a>
+        <a class="qu qu-3" target="_blank">Q</a>
+        <a class="qu qu-4" target="_blank">宅</a>
+        <a class="qu qu-5" target="_blank">腐</a>
+        <a class="qu qu-6" target="_blank">秀</a>
       </div>
-      </p>
     </div>
+    <div class="layout-center" style="margin: 50px">点它~</div>
+
 
   </div>
 
