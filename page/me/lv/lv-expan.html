@@ -65,38 +65,44 @@
       height: 5rem;
       box-sizing: border-box;
       line-height: 5rem;
-      background-color: #E16132;
+      background-color: transparent;
       left: 0;
       right: 0;
       top: 0;
       bottom: 0;
       margin: auto;
-      transition: background-color .2s, transform .5s, color .2s;
+      transition: background-color .2s, transform .2s, color .2s;
       border-radius: 50%;
       transform: translate3d(0, 0, 0);
     }
 
     .qu-btn.active ~ .qu-1{
+      background-color: #E16132;
       transform: translate3d(0, -200%, 0);
     }
 
     .qu-btn.active ~ .qu-2{
+      background-color: #E16132;
       transform: translate3d(-173.20%, -100%, 0);
     }
 
     .qu-btn.active ~ .qu-3 {
+      background-color: #E16132;
       transform: translate3d(173.20%, -100%, 0);
     }
 
     .qu-btn.active ~ .qu-4{
+      background-color: #E16132;
       transform: translate3d(0, 200%, 0);
     }
 
     .qu-btn.active ~ .qu-5 {
+      background-color: #E16132;
       transform: translate3d(-173.20%, 100%, 0);
     }
 
     .qu-btn.active ~ .qu-6 {
+      background-color: #E16132;
       transform: translate3d(173.20%, 100%, 0);
     }
 
@@ -131,8 +137,38 @@
 </div>
 
 <script>
+  var os = function() {
+    var ua = navigator.userAgent,
+      isWindowsPhone = /(?:Windows Phone)/.test(ua),
+      isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+      isAndroid = /(?:Android)/.test(ua),
+      isFireFox = /(?:Firefox)/.test(ua),
+      isChrome = /(?:Chrome|CriOS)/.test(ua),
+      isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+      isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+      isPc = !isPhone && !isAndroid && !isSymbian;
+    return {
+      isTablet: isTablet,
+      isPhone: isPhone,
+      isAndroid : isAndroid,
+      isPc : isPc
+    };
+  }();
+
+
   var btn = document.getElementsByClassName("qu-btn")[0];
-  document.body.addEventListener("touchstart", function () {
+
+  if (os.isPc){
+    document.body.addEventListener("mousedown",function (ev) {
+      clickLV();
+    });
+
+  }else {
+    document.body.addEventListener("touchstart", function (ev) {
+      clickLV();
+    });
+  }
+  function clickLV() {
     var cl = btn.getAttribute("class");
 
     if (cl.indexOf("active") > -1) {
@@ -141,7 +177,7 @@
       cl = cl.concat(" active");
     }
     btn.setAttribute("class",cl);
-  });
+  }
 </script>
 
 </body>
