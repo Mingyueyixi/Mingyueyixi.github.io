@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100%;margin: 0;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1024, height=768,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+  <title>文字</title>
+  <script src="../../../js/ColorUtil.js"></script>
+</head>
+<body style="width: 100%;height: 100%;margin: 0">
+
+<canvas id="myCanvas" style="display: block">
+  Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script type="text/javascript">
+
+  var canvas = document.getElementById("myCanvas");
+  var cxt = canvas.getContext("2d");//没调用一次，产生一个新的绘制界面
+
+  canvas.width = document.body.offsetWidth;
+  canvas.height = document.body.offsetHeight;
+
+  function draw() {
+
+    isEndDraw = false;
+    var i = 0;
+    var fontSize = 0;
+    var text = '覃侣';
+    var textWidth = 0;
+
+    var gradient;
+
+    for (i; i < 50; i++) {
+      //不写字体不行，无效，默认10px sans-serif
+      fontSize = 20 + Math.random() * 60;
+
+      cxt.font = fontSize + "px SimSun";
+      // console.log(cxt.font);
+
+      textWidth = cxt.measureText(text).width;
+
+
+      var tX = Math.random() * (canvas.width - fontSize);
+
+
+      //渐变是基于画布的坐标（x0,y0,x1,y1）
+      gradient = cxt.createLinearGradient(tX, 0, tX + textWidth, 0);
+      gradient.addColorStop("0", ColorUtil.randomColor());
+      gradient.addColorStop("0.5", ColorUtil.randomColor());
+      gradient.addColorStop("1.0", ColorUtil.randomColor());
+      cxt.strokeStyle = gradient;
+
+      cxt.save();
+      cxt.rotate(Math.random() * 2 * Math.PI);
+      cxt.strokeText(text, tX, fontSize + Math.random() * (canvas.height - 2 * fontSize));
+      cxt.restore();
+      // Create gradient
+
+    }
+
+  }
+
+  var limitSize = Math.sqrt(canvas.height * canvas.height + canvas.width * canvas.width);
+  var isEndDraw = false;
+  document.onmousedown = function (e) {
+    console.log(isEndDraw);
+    if (isEndDraw) {
+      e = e || window.event;
+      var x = e.clientX;
+      var y = e.clientY;
+      drawCircle(x, y)
+    }
+  }
+  document.ontouchstart = function (e) {
+    if (isEndDraw) {
+      var x = e.touches[0].clientX;
+      var y = e.touches[0].clientY;
+      drawCircle(x, y)
+    }
+  }
+
+  var isRunCircle = false;
+  var circleTimer = undefined;
+
+  function drawCircle(x, y) {
+    console.log(x, y, canvas.width, canvas.height);
+    if (isRunCircle) {
+      clearInterval(circleTimer)
+      // return;
+    }
+
+    var radius = 5;
+    cxt.fillStyle = ColorUtil.randomColor();
+
+    //四条对边,取最长一条
+    if (x <= canvas.width / 2 && y <= canvas.height / 2) {//左上
+      limitSize = Math.sqrt((canvas.width - x) * (canvas.width - x) + (canvas.height - y) * (canvas.height - y));
+    }
+    else if (x >= canvas.width / 2 && y <= canvas.height / 2) {//右上
+      limitSize = Math.sqrt(x * x + (canvas.height - y) * (canvas.height - y));
+    }
+    else if (x <= canvas.width / 2 && y >= canvas.height / 2) {//左下
+      limitSize = Math.sqrt((canvas.width - x) * canvas.width - x + y * y);
+    }
+    else if (x >= canvas.width / 2 && y >= canvas.height / 2) {//右下
+      limitSize = Math.sqrt(x * x + y * y);
+    } else {
+      limitSize = 0;
+    }
+
+    cxt.beginPath();//在循环体外,每次点就开启路径。否则移动端多次后，动画失效。
+    circleTimer = setInterval(function () {
+      isRunCircle = true;
+      radius = 1.1 * radius;
+      cxt.arc(x, y, radius, 0, 2 * Math.PI, false)
+      cxt.closePath()
+      cxt.fill()
+
+      if (radius > limitSize) {
+        clearInterval(circleTimer)
+        isRunCircle = false;
+        console.log('结束', radius);
+        startTxt();
+
+      }
+    }, 10);
+
+
+  }
+
+  var startTxtCount = 0;
+
+  function startTxt() {
+    if (startTxtCount === 3) {
+      return;
+    }
+    var drawCount = 0;
+    draw();
+    var timmer = setInterval(function () {
+      draw();
+      if (drawCount > 50) {
+        clearInterval(timmer);
+        isEndDraw = true;
+        console.log('draw txt end');
+        drawCircle(canvas.width / 2, canvas.height / 2)
+        return;
+      }
+      drawCount++;
+    }, 50);
+    startTxtCount++;
+  }
+
+  startTxt();
+</script>
+
+</body>
+</html>
