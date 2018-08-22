@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>出轨大测试</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
     <script src="../../../lib/vue.js"></script>
     <style>
         html, body {
@@ -23,6 +24,7 @@
         #app {
             padding: 0.5rem;
             min-height: 60%;
+            margin-bottom: 1rem;
             width: 100%;
             position: relative;
         }
@@ -82,7 +84,7 @@
         .result-other-wrap {
             margin: 40px 0;
             padding: 1rem;
-            border: 1px #4e555b dashed;
+            border: 1px #888888 dashed;
         }
 
         .result-opt-title {
@@ -94,15 +96,15 @@
             font-size: 16px;
         }
 
-        .end-wrap{
+        .end-wrap {
             position: absolute;
             font-size: 14px;
             bottom: 0;
             left: 0;
             right: 0;
             text-align: center;
-            margin: 1rem 0;
         }
+
         .end-text {
             color: #888888;
         }
@@ -144,22 +146,22 @@
     <div v-if="resultOpt">
         <!--测试答案-->
         <div class="result-exam-wrap">
-            <p class="result-title">测试结果：</p>
-            <p class="result-opt-title">{{resultOpt+"、"}}<span>{{answers[resultOpt].title}}</span></p>
-            <p class="result-opt-content">{{answers[resultOpt].des | formatParagraph}}</p>
+            <div class="result-title">测试结果：</div>
+            <div class="result-opt-title">{{resultOpt+"、"}}<span>{{answers[resultOpt].title}}</span></div>
+            <div class="result-opt-content">{{answers[resultOpt].des | formatParagraph}}</div>
         </div>
         <!--参考答案-->
         <div class="result-other-wrap">
             <p class="result-title">更多答案：</p>
             <div v-for="(item,key) in answers">
-                <p class="result-opt-title">{{key+"、"}}<span>{{item.title}}</span></p>
-                <p>{{item.des | formatParagraph}}</p>
+                <div class="result-opt-title">{{key+"、"}}<span>{{item.title}}</span></div>
+                <div>{{item.des | formatParagraph}}</div>
             </div>
         </div>
     </div>
 
     <div class="end-wrap">
-        <div class="end-text"> 测试大作战，测出狗脑子 </div>
+        <div class="end-text"> 测试大作战，测出狗脑子</div>
     </div>
 </div>
 
@@ -277,7 +279,7 @@
 
         },
         methods: {
-            selectClick:function(e, item, index) {
+            selectClick: function (e, item, index) {
                 console.log(item.next);
                 if (this.disableSelect) {
                     return;
@@ -301,10 +303,10 @@
             },
         },
         filters: {
-            filterSerialNum:function(val) {
+            filterSerialNum: function (val) {
                 return val.substring(2, val.length);
             },
-            formatParagraph:function(val) {
+            formatParagraph: function (val) {
                 return "　　" + val;
             }
         }
