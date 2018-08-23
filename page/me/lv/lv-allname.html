@@ -16,7 +16,7 @@
 <script type="text/javascript">
 
   var canvas = document.getElementById("myCanvas");
-  var cxt = canvas.getContext("2d");//没调用一次，产生一个新的绘制界面
+  var cxt = canvas.getContext("2d");//每调用一次，产生一个新的绘制界面
 
   canvas.width = document.body.offsetWidth;
   canvas.height = document.body.offsetHeight;
@@ -139,7 +139,7 @@
     draw();
     var timmer = setInterval(function () {
       draw();
-      if (drawCount > 50) {
+      if (drawCount > 20) {
         clearInterval(timmer);
         isEndDraw = true;
         console.log('draw txt end');

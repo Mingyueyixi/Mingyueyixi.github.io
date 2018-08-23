@@ -1,317 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>出轨大测试</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-    <script src="../../../lib/vue.js"></script>
-    <style>
-        html, body {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            width: 100%;
-        }
+  <meta charset="UTF-8">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>出轨大测试</title>
+  <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+  <script src="../../../lib/vue.js"></script>
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
 
-        p, div {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    p, div {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        #app {
-            padding: 0.5rem;
-            min-height: 60%;
-            margin-bottom: 1rem;
-            width: 100%;
-            position: relative;
-        }
+    #app {
+      padding: 0.5rem;
+      min-height: 60%;
+      margin-bottom: 1rem;
+      width: 100%;
+      position: relative;
+    }
 
-        .question-wrap {
-            background: #fff;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: #cddde5 0px 1px 10px 0px;
-        }
+    .question-wrap {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: #cddde5 0px 1px 10px 0px;
+    }
 
-        .question-title {
-            font-size: 18px;
-            margin: 0.5rem;
-        }
+    .question-title {
+      font-size: 18px;
+      margin: 0.5rem;
+    }
 
-        .try-go {
-            font-weight: bold;
-            text-align: center;
-            color: #FF7F27;
-            font-size: 20px;
-            margin: 1.5rem 0 2rem 0;
-        }
+    .try-go {
+      font-weight: bold;
+      text-align: center;
+      color: #FF7F27;
+      font-size: 20px;
+      margin: 1.5rem 0 2rem 0;
+    }
 
-        .option-item-wrap {
-            font-size: 18px;
-            margin: 0.2rem 0;
-            display: flex;
-        }
+    .option-item-wrap {
+      font-size: 18px;
+      margin: 0.2rem 0;
+      display: flex;
+    }
 
-        .option-item-wrap > .option-item-text {
-            display: inline-block;
-            width: 90%;
-            font-size: 16px;
-        }
+    .option-item-wrap > .option-item-text {
+      display: inline-block;
+      width: 90%;
+      font-size: 16px;
+    }
 
-        .icon-check {
-            display: inline-block;
-            text-align: right;
-        }
+    .icon-check {
+      display: inline-block;
+      text-align: right;
+    }
 
-        .icon-check:after {
-            display: inline-block;
-            color: #FF7F27;
-            content: "□";
-        }
+    .icon-check:after {
+      display: inline-block;
+      color: #FF7F27;
+      content: "□";
+    }
 
-        .icon-check.checked:after {
-            content: "✔";
-            font-size: 18px;
-        }
+    .icon-check.checked:after {
+      content: "✔";
+      font-size: 18px;
+    }
 
-        .result-title {
-            font-size: 18px;
-        }
+    .result-title {
+      font-size: 18px;
+    }
 
-        .result-other-wrap {
-            margin: 40px 0;
-            padding: 1rem;
-            border: 1px #888888 dashed;
-        }
+    .result-other-wrap {
+      margin: 40px 0;
+      padding: 1rem;
+      border: 1px #888888 dashed;
+    }
 
-        .result-opt-title {
-            margin: 0.5rem 0;
-            color: #FF7F27;
-        }
+    .result-opt-title {
+      margin: 0.5rem 0;
+      color: #FF7F27;
+    }
 
-        .result-opt-content {
-            font-size: 16px;
-        }
+    .result-opt-content {
+      font-size: 16px;
+    }
 
-        .end-wrap {
-            position: absolute;
-            font-size: 14px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
+    .end-wrap {
+      position: relative;
+      font-size: 14px;
+      text-align: center;
+      box-sizing: content-box;
+      transform: translate(0, 100%);
+      margin: 1rem 0;
+    }
 
-        .end-text {
-            color: #888888;
-        }
+    .end-text {
+      color: #888888;
+    }
 
-        .end-text:before {
-            content: "";
-            display: inline-block;
-            height: 1px;
-            border-bottom: 1px #888888 dotted;
-            width: 15%;
-        }
+    .end-text:before {
+      content: "";
+      display: inline-block;
+      height: 1px;
+      border-bottom: 1px #888888 dotted;
+      width: 15%;
+    }
 
-        .end-text:after {
-            content: "";
-            display: inline-block;
-            height: 1px;
-            border-bottom: 1px #888888 dotted;
-            width: 15%;
+    .end-text:after {
+      content: "";
+      display: inline-block;
+      height: 1px;
+      border-bottom: 1px #888888 dotted;
+      width: 15%;
 
-        }
-    </style>
+    }
+  </style>
 </head>
 <body style="background-color: #f1f6ff">
 <div id="app">
-    <div class="try-go">测一测，你会出轨吗？</div>
-    <!--答题-->
-    <div v-if="!resultOpt" class="question-wrap">
-        <div class="question-title">{{questions[serialNum].title | filterSerialNum}}</div>
-        <div>
-            <div class="option-item-wrap" v-for="(item,index) in questions[serialNum].candidates"
-                 @click="selectClick($event,item,index)">
-                <div class="option-item-text">{{ (index+1) + "、" + item.des }}</div>
-                <span :class="item.check?'icon-check checked':'icon-check'"></span>
-            </div>
+  <div class="try-go">测一测，你会出轨吗？</div>
+  <!--答题-->
+  <div v-if="!resultOpt" class="question-wrap">
+    <div class="question-title">{{questions[serialNum].title | filterSerialNum}}</div>
+    <div>
+      <div class="option-item-wrap" v-for="(item,index) in questions[serialNum].candidates"
+           @click="selectClick($event,item,index)">
+        <div class="option-item-text">{{ (index+1) + "、" + item.des }}</div>
+        <span :class="item.check?'icon-check checked':'icon-check'"></span>
+      </div>
 
-        </div>
     </div>
+  </div>
 
-    <div v-if="resultOpt">
-        <!--测试答案-->
-        <div class="result-exam-wrap">
-            <div class="result-title">测试结果：</div>
-            <div class="result-opt-title">{{resultOpt+"、"}}<span>{{answers[resultOpt].title}}</span></div>
-            <div class="result-opt-content">{{answers[resultOpt].des | formatParagraph}}</div>
-        </div>
-        <!--参考答案-->
-        <div class="result-other-wrap">
-            <p class="result-title">更多答案：</p>
-            <div v-for="(item,key) in answers">
-                <div class="result-opt-title">{{key+"、"}}<span>{{item.title}}</span></div>
-                <div>{{item.des | formatParagraph}}</div>
-            </div>
-        </div>
+  <div v-if="resultOpt">
+    <!--测试答案-->
+    <div class="result-exam-wrap">
+      <div class="result-title">测试结果：</div>
+      <div class="result-opt-title">{{resultOpt+"、"}}<span>{{answers[resultOpt].title}}</span></div>
+      <div class="result-opt-content">{{answers[resultOpt].des | formatParagraph}}</div>
     </div>
+    <!--参考答案-->
+    <div class="result-other-wrap">
+      <p class="result-title">更多答案：</p>
+      <div v-for="(item,key) in answers">
+        <div class="result-opt-title">{{key+"、"}}<span>{{item.title}}</span></div>
+        <div>{{item.des | formatParagraph}}</div>
+      </div>
+    </div>
+  </div>
 
-    <div class="end-wrap">
-        <div class="end-text"> 测试大作战，测出狗脑子</div>
-    </div>
+  <div class="end-wrap">
+    <div class="end-text"> 测试大作战，测出狗脑子</div>
+  </div>
 </div>
 
 <script>
 
-    //p标签可导致有字符串拼接的模板语法{{}}解析出问题
-    var app = new Vue({
-        el: '#app',
-        data: {
-            checkItemClass: "icon-check",
-            serialNum: 0,
-            questions: [
-                {
-                    title: "1、你会把自己的全部时间都花在工作上面吗？",
-                    candidates: [
-                        {des: "会的", next: 2, check: false},
-                        {des: "不会", next: 4, check: false},
-                        {des: "看情况", next: 3, check: false},
-                    ]
-                },
-                {
-                    title: "2、你能接受和自己的爱人是异地恋吗？",
-                    candidates: [
-                        {des: "能接受", next: 4, check: false},
-                        {des: "不能接受", next: 3, check: false},
-                        {des: "看情况", next: 6, check: false},
-                    ]
-                },
-                {
-                    title: "3、你会把上班时间和下班时间分得很清楚吗？",
-                    candidates: [
-                        {des: "是的", next: 4, check: false},
-                        {des: "不是", next: 7, check: false},
-                        {des: "看情况", next: 5, check: false},
-                    ]
-                },
-                {
-                    title: "4、路上遇见一个小女孩自己在路边你会怎么想？",
-                    candidates: [
-                        {des: "走丢了", next: 6, check: false},
-                        {des: "在等人", next: 7, check: false},
-                        {des: "自己在玩", next: 8, check: false},
-                    ]
-                },
-                {
-                    title: "5、你会把自己的东西全部都分类弄好吗？",
-                    candidates: [
-                        {des: "会", next: 7, check: false},
-                        {des: "不会", next: 8, check: false},
-                        {des: "偶尔会", next: 6, check: false},
-                    ]
-                },
-                {
-                    title: "6、如果别人乱动你的东西你会怎么样？",
-                    candidates: [
-                        {des: "没关系", next: 9, check: false},
-                        {des: "很生气", next: 7, check: false},
-                        {des: "也乱动他的东西", next: 10, check: false},
-                    ]
-                },
-                {
-                    title: "7、只要有时间你就喜欢出门走走吗？",
-                    candidates: [
-                        {des: "是的", next: 8, check: false},
-                        {des: "不是", next: 10, check: false},
-                        {des: "还好", next: 9, check: false},
-                    ]
-                },
-                {
-                    title: "8、你每天下班都会按时回家吗？",
-                    candidates: [
-                        {des: "不会按时回家", next: 9, check: false},
-                        {des: "按时回家", next: "C", check: false},
-                        {des: "看情况", next: 10, check: false},
-                    ]
-                },
-                {
-                    title: "9、你喜欢做自己没有尝试过的事情？",
-                    candidates: [
-                        {des: "喜欢", next: "B", check: false},
-                        {des: "不喜欢", next: "D", check: false},
-                        {des: "还好", next: 10, check: false},
-                    ]
-                },
-                {
-                    title: "10、你喜欢寻求刺激感吗？",
-                    candidates: [
-                        {des: "一般", next: "B", check: false},
-                        {des: "喜欢", next: "A", check: false},
-                        {des: "不喜欢", next: "C", check: false},
-                    ]
-                },
-
-            ],
-            resultOpt: "",
-            answers: {
-                A: {
-                    title: "一定会出轨",
-                    des: "在婚姻期间，你是属于会出轨的人。你是一个比较没有责任感的人，就算是结婚了你也觉得只是像单纯的过家家一样，没有所谓的家庭观念。你可能更想要的生活就是那种各过各的生活，不互相干预。而且爱面子的你也总是想着过上家里面有一个外面也有一个的生活。"
-                },
-                B: {
-                    title: "可能会出轨",
-                    des: "在婚姻期间，你是很有可能会出轨的。你是一个比较没有定性的人，很容易被自己身边的朋友带跑，加上本身你的性格也是比较爱玩的，没有办法抵挡住外面灯红酒绿的生活。婚姻的平淡可能会让你觉得生活一点都不有趣，你可能会自己出去寻找刺激的生活。"
-                },
-                C: {
-                    title: "出轨几率很小",
-                    des: "在婚姻期间，你的出轨几率是很小的，就算是有出轨的可能性，但是也会被自己扼杀在摇篮之中。你是一个比较喜欢稳定生活的人，就算有一段时间会被其他的异性吸引，但是你并不会想着要破坏自己现在的生活。自制能力很强的你会选择约束好自己。"
-                },
-                D: {
-                    title: "不会出轨",
-                    des: "在婚姻期间，你是绝对不会出轨的。在生活中，你对自己的另一半非常的忠贞，就算是双方之间的感情已经变得很平淡了，但是你也不会想着要重新找一个。对于出轨的人你虽然并不会讨厌，但是也不喜欢他们的那种行为，基本上是对这样的人敬而远之。"
-                },
-            },
-            disableSelect: false
-
+  //p标签可导致有字符串拼接的模板语法{{}}解析出问题
+  var app = new Vue({
+    el: '#app',
+    data: {
+      checkItemClass: "icon-check",
+      serialNum: 0,
+      questions: [
+        {
+          title: "1、你会把自己的全部时间都花在工作上面吗？",
+          candidates: [
+            {des: "会的", next: 2, check: false},
+            {des: "不会", next: 4, check: false},
+            {des: "看情况", next: 3, check: false},
+          ]
         },
-        methods: {
-            selectClick: function (e, item, index) {
-                console.log(item.next);
-                if (this.disableSelect) {
-                    return;
-                }
-                this.disableSelect = true;
-                item.check = "true";
-
-                var _this = this;
-                setTimeout(function () {
-                    _this.disableSelect = false;
-                    if (/A|B|C|D/.test(item.next)) {
-                        //  出结果了
-                        _this.resultOpt = item.next;
-                    }
-                    else {
-                        //下一题
-                        _this.serialNum = (item.next - 1) + '';
-                    }
-                }, 500);
-
-            },
+        {
+          title: "2、你能接受和自己的爱人是异地恋吗？",
+          candidates: [
+            {des: "能接受", next: 4, check: false},
+            {des: "不能接受", next: 3, check: false},
+            {des: "看情况", next: 6, check: false},
+          ]
         },
-        filters: {
-            filterSerialNum: function (val) {
-                return val.substring(2, val.length);
-            },
-            formatParagraph: function (val) {
-                return "　　" + val;
-            }
+        {
+          title: "3、你会把上班时间和下班时间分得很清楚吗？",
+          candidates: [
+            {des: "是的", next: 4, check: false},
+            {des: "不是", next: 7, check: false},
+            {des: "看情况", next: 5, check: false},
+          ]
+        },
+        {
+          title: "4、路上遇见一个小女孩自己在路边你会怎么想？",
+          candidates: [
+            {des: "走丢了", next: 6, check: false},
+            {des: "在等人", next: 7, check: false},
+            {des: "自己在玩", next: 8, check: false},
+          ]
+        },
+        {
+          title: "5、你会把自己的东西全部都分类弄好吗？",
+          candidates: [
+            {des: "会", next: 7, check: false},
+            {des: "不会", next: 8, check: false},
+            {des: "偶尔会", next: 6, check: false},
+          ]
+        },
+        {
+          title: "6、如果别人乱动你的东西你会怎么样？",
+          candidates: [
+            {des: "没关系", next: 9, check: false},
+            {des: "很生气", next: 7, check: false},
+            {des: "也乱动他的东西", next: 10, check: false},
+          ]
+        },
+        {
+          title: "7、只要有时间你就喜欢出门走走吗？",
+          candidates: [
+            {des: "是的", next: 8, check: false},
+            {des: "不是", next: 10, check: false},
+            {des: "还好", next: 9, check: false},
+          ]
+        },
+        {
+          title: "8、你每天下班都会按时回家吗？",
+          candidates: [
+            {des: "不会按时回家", next: 9, check: false},
+            {des: "按时回家", next: "C", check: false},
+            {des: "看情况", next: 10, check: false},
+          ]
+        },
+        {
+          title: "9、你喜欢做自己没有尝试过的事情？",
+          candidates: [
+            {des: "喜欢", next: "B", check: false},
+            {des: "不喜欢", next: "D", check: false},
+            {des: "还好", next: 10, check: false},
+          ]
+        },
+        {
+          title: "10、你喜欢寻求刺激感吗？",
+          candidates: [
+            {des: "一般", next: "B", check: false},
+            {des: "喜欢", next: "A", check: false},
+            {des: "不喜欢", next: "C", check: false},
+          ]
+        },
+
+      ],
+      resultOpt: "",
+      answers: {
+        A: {
+          title: "一定会出轨",
+          des: "在婚姻期间，你是属于会出轨的人。你是一个比较没有责任感的人，就算是结婚了你也觉得只是像单纯的过家家一样，没有所谓的家庭观念。你可能更想要的生活就是那种各过各的生活，不互相干预。而且爱面子的你也总是想着过上家里面有一个外面也有一个的生活。"
+        },
+        B: {
+          title: "可能会出轨",
+          des: "在婚姻期间，你是很有可能会出轨的。你是一个比较没有定性的人，很容易被自己身边的朋友带跑，加上本身你的性格也是比较爱玩的，没有办法抵挡住外面灯红酒绿的生活。婚姻的平淡可能会让你觉得生活一点都不有趣，你可能会自己出去寻找刺激的生活。"
+        },
+        C: {
+          title: "出轨几率很小",
+          des: "在婚姻期间，你的出轨几率是很小的，就算是有出轨的可能性，但是也会被自己扼杀在摇篮之中。你是一个比较喜欢稳定生活的人，就算有一段时间会被其他的异性吸引，但是你并不会想着要破坏自己现在的生活。自制能力很强的你会选择约束好自己。"
+        },
+        D: {
+          title: "不会出轨",
+          des: "在婚姻期间，你是绝对不会出轨的。在生活中，你对自己的另一半非常的忠贞，就算是双方之间的感情已经变得很平淡了，但是你也不会想着要重新找一个。对于出轨的人你虽然并不会讨厌，但是也不喜欢他们的那种行为，基本上是对这样的人敬而远之。"
+        },
+      },
+      disableSelect: false
+
+    },
+    methods: {
+      selectClick: function (e, item, index) {
+        console.log(item.next);
+        if (this.disableSelect) {
+          return;
         }
+        this.disableSelect = true;
+        item.check = "true";
 
-    });
+        var _this = this;
+        setTimeout(function () {
+          _this.disableSelect = false;
+          if (/A|B|C|D/.test(item.next)) {
+            //  出结果了
+            _this.resultOpt = item.next;
+          }
+          else {
+            //下一题
+            _this.serialNum = (item.next - 1) + '';
+          }
+        }, 500);
+
+      },
+    },
+    filters: {
+      filterSerialNum: function (val) {
+        return val.split(/[\d]*、/)[1];
+      },
+      formatParagraph: function (val) {
+        return "　　" + val;
+      }
+    }
+
+  });
 
 </script>
 </body>
