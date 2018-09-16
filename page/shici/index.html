@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <title>诗词</title>
+    <style>
+        .jp-zhong {
+            color: green;
+            font-weight: bold;
+        }
+
+        .jp-jgao {
+            color: #FF7F27;
+            font-weight: bold;
+        }
+
+        .jp-err {
+            color: #ff3333;
+            font-weight: bold;
+        }
+
+        .pingshuiResult {
+            font-size: 18px;
+        }
+
+        html, body {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-x: hidden;
+        }
+
+        div, textarea {
+            box-sizing: border-box;
+        }
+
+        @media only screen and (min-width: 320px) {
+            .base-page {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow-x: hidden;
+            }
+        }
+
+        @media only screen and (min-width: 720px) {
+
+            .base-page {
+                position: absolute;
+                width: 480px;
+                margin: 0 auto;
+                overflow-x: hidden;
+
+            }
+        }
+
+        .base-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            line-height: 40px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            z-index: 999;
+        }
+
+        .base-content {
+            position: absolute;
+            padding: 10px;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            word-break: break-all;
+            overflow-y: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            box-sizing: content-box;
+            padding: 8px 16px;
+            text-align: center;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            background-color: #007bff;
+        }
+
+        .test-input-wrap {
+            margin-top: 10px;
+        }
+
+        .test-input-wrap textarea {
+            width: 100%;
+            height: 150px;
+            font-size: 14px;
+
+        }
+
+        .clear-float:after {
+            content: "";
+            display: block; /*让生成的元素以块级元素显示，占满剩余空间*/
+            height: 0; /*避免生成的内容破坏原有布局高度*/
+            clear: both; /*清除浮动*/
+            visibility: hidden; /*让生成的内容不可见*/
+        }
+
+        .clear-float {
+            zoom: 1; /*为IE6，7的兼容性设置*/
+        }
+
+        .result-title {
+            font-size: 14px;
+            float: left;
+            display: none;
+        }
+
+        .result-des{
+            text-align: left;
+            margin-top: 10px;
+        }
+        .duoyin-bar {
+            color: #FF7F27;
+            box-sizing: content-box;
+            padding: 10px 10px 5px 10px;
+            border-bottom: 1px solid #C6D8F9;
+            font-weight: bold;
+        }
+        .duoyin-con{
+            box-sizing: content-box;
+            border-bottom: 1px solid #C6D8F9;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="base-page">
+    <div class="base-bar">格律测试</div>
+    <div class="base-content">
+
+        <div class="test-input-wrap clear-float">
+            <div>
+                <textarea id="pingshuiTextArea"></textarea>
+            </div>
+            <div class="btn-primary" style="float: right" onclick="clickPingshui(event)">分析</div>
+        </div>
+
+        <div>
+            <div class="clear-float">
+                <div class="result-title">分析结果：</div>
+            </div>
+            <!--<pre id="pingshuiResult"></pre>-->
+            <div id="pingshuiResult"></div>
+
+            <div class="result-des"></div>
+        </div>
+
+    </div>
+</div>
+<script src="pingshuiUtil.js"></script>
+<script src="shiUtil.js"></script>
+<script>
+
+    function clickPingshui(e) {
+
+        var elPingshuiTextArea = document.getElementById("pingshuiTextArea");
+        var elPingshuiResult = document.getElementById("pingshuiResult");
+
+        var oldTime = new Date().getTime();
+        var pi = pingshuiUtil.checkAll(elPingshuiTextArea.value);
+
+        // elPingshuiResult.innerHTML = pingshuiUtil.formatCheckText(pi);
+        elPingshuiResult.innerHTML = shiUtil.getGelvShiHtml(pi);
+        document.querySelector(".result-title").style.display = "block";
+
+        // console.log(shiUtil.getGelvShiHtml(pi));
+        // console.log(pi);
+
+        document.querySelector(".result-des").innerHTML = shiUtil.getDuoyinHtml(pi);
+        // console.log(new Date().getTime() - oldTime);
+    }
+
+
+</script>
+
+</body>
+</html>
