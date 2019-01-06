@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>那天，我们相识</title>
+  <style>
+    html, body {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-x: hidden;
+
+    }
+
+    div, textarea {
+      box-sizing: border-box;
+    }
+
+    @media only screen and (min-width: 320px) {
+      .base-page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-x: hidden;
+      }
+    }
+
+    @media only screen and (min-width: 720px) {
+
+      .base-page {
+        position: absolute;
+        width: 480px;
+        margin: 0 auto;
+        overflow-x: hidden;
+
+      }
+    }
+
+    .base-content {
+      position: absolute;
+      padding: 10px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+      word-break: break-all;
+      overflow-y: auto;
+      background: #E6F4E1;
+      font-size: 18px;
+    }
+
+    .clear-float:after {
+      content: "";
+      display: block; /*让生成的元素以块级元素显示，占满剩余空间*/
+      height: 0; /*避免生成的内容破坏原有布局高度*/
+      clear: both; /*清除浮动*/
+      visibility: hidden; /*让生成的内容不可见*/
+    }
+
+    .clear-float {
+      zoom: 1; /*为IE6，7的兼容性设置*/
+    }
+    .desWrap{
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="base-page">
+  <div class="base-content">
+    <div class="desWrap">
+      <p style="font-size: 20px;color:#E16132">阿凤，阿凤，阿凤</p>
+      <p style="font-size: 14px;text-align: right;">——我呼啦啦地过来叫你</p>
+      <p>时间定格在2018年11月23日</p>
+      <p>那天，我们相识</p>
+      <p><span>如今已经过了</span><span id="dateTime"></span></p>
+      <p><span>如果换成小时，那么有</span><span id="pAllHou"></span>个</p>
+      <p><span>如果精确一些，那么有</span><span id="pAllMin"></span>分钟</p>
+      <p><span>如果再精确一些，就是</span><span id="pAllSec"></span>秒钟</p>
+      <p id="pDes"></p>
+      <p>希望 ni 接下来的每一天都是<span style="font-size: 24px;color: #E16132">美好</span>的……</p>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+  var elDateTime = document.getElementById("dateTime");
+  var elPDes = document.getElementById("pDes");
+  var elPAllHou = document.getElementById("pAllHou");
+  var elPAllMin = document.getElementById("pAllMin");
+  var elPAllSec = document.getElementById("pAllSec");
+
+  var meetTime = new Date("2018/11/23 15:39:00").getTime();
+
+  function updateInfo() {
+    var countTime = new Date().getTime() - meetTime;
+    var s = (countTime / 1000) >> 0;
+    var m = (countTime / (1000 * 60)) >> 0;
+    var h = (countTime / (1000 * 60 * 60)) >> 0;
+    var d = (countTime / (1000 * 60 * 60 * 24)) >> 0;
+    var sH = h - d * 24;
+    var sM = m - h * 60;
+    var sS = s - m * 60;
+
+    elDateTime.innerText = d + "天又" + sH + "小时" + sM + "分" + sS + "秒";
+    if (elPAllHou.innerText != h) {
+      elPAllHou.innerText = h;
+    }
+    if (elPAllMin.innerText != m) {
+      elPAllMin.innerText = m;
+    }
+    if (elPAllSec.innerText != s) {
+      elPAllSec.innerText = s;
+    }
+  }
+
+  updateInfo();
+  setInterval(updateInfo, 1000);
+</script>
+</body>
+</html>
